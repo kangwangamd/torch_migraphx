@@ -12,6 +12,7 @@ RUN pip install https://github.com/RadeonOpenCompute/rbuild/archive/master.tar.g
 # install migraphx from source
 RUN git clone https://github.com/ROCm/AMDMIGraphX.git \
     && cd AMDMIGraphX && git checkout ${MIGRAPHX_BRANCH} \
+    && git checkout 1d480afc628b4be538f19a7a13616507d231bd6e \
     && rbuild build -d depend -DBUILD_TESTING=Off -DCMAKE_INSTALL_PREFIX=/opt/rocm/ --cxx=/opt/rocm/llvm/bin/clang++ -DGPU_TARGETS=${GPU_ARCH} \
     && cd build && make install
 
